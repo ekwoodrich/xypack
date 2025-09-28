@@ -119,6 +119,7 @@ run_package_command() {
     if zip -r "$zip_path" . -x '*.zip'; then
       echo
       printf "%b\n" "${COLOR_GREEN}Package created successfully: $zip_path${COLOR_RESET}"
+      echo
     else
       echo
       printf "%b\n\n" "${COLOR_RED}Failed to create package.${COLOR_RESET}" >&2
@@ -184,7 +185,7 @@ print_header() {
     elif [[ "$remainder" == uninstall ]]; then
       color="$COLOR_RED"
     elif [[ "$remainder" == package ]]; then
-      color="$COLOR_CYAN"
+      color="$COLOR_LIGHT_GRAY"
     fi
     printf " %b %b\n" "${COLOR_LABEL}${base_label}${COLOR_RESET}" "${color}${remainder}${COLOR_RESET}"
   else
@@ -192,7 +193,7 @@ print_header() {
   fi
   printf "\n"
   if [[ -n "$description" ]]; then
-    printf " %b%s%b\n" "$COLOR_LIGHT_GRAY" "$description" "$COLOR_RESET"
+    printf " %b%s%b\n" "$COLOR_GRAY" "$description" "$COLOR_RESET"
   fi
   printf "\n"
   printf "%s\n\n" "$separator"
